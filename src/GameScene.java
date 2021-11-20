@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class GameScene extends Scene {
 
-        //Definition of the different variabels used in this class
+        //Definition of the different variables used in this class
 
         private Integer numberOfLives = 3;
         private StaticThing background1Left;
