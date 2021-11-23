@@ -206,8 +206,6 @@ public class GameScene extends Scene {
                                         numberOfLives-=1;
                                         heartList.get(numberOfLives).getBackground().setImage(new Image("heartBroken.png"));
                                 }
-                                //g.getChildren().remove(heartList.get(numberOfLives).getBackground());
-                                //g.getChildren().add(heartBrokenList.get(numberOfLives).getBackground());
                         }
                 }
 
@@ -228,6 +226,7 @@ public class GameScene extends Scene {
                                 win++;
                         }
                         if (win==30) {
+                                timer.stop();
                                 g.getChildren().add(new StaticThing("YouWin.png",370,0,0,0,800,800).getBackground());
                         }
                 }
