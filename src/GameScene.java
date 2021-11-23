@@ -1,6 +1,7 @@
 import javafx.scene.Group;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.shape.Rectangle;
 import java.util.Collection;
@@ -201,9 +202,12 @@ public class GameScene extends Scene {
                         if (immune==false && hero.getHitbox().intersects(ennemy.getHitbox().getX(), ennemy.getHitbox().getY(),ennemy.getHitbox().getWidth(),ennemy.getHitbox().getWidth())){
                                 immune=true;
                                 hitTime=time;
-                                numberOfLives-=1;
-                                g.getChildren().remove(heartList.get(numberOfLives).getBackground());
-                                g.getChildren().add(heartBrokenList.get(numberOfLives).getBackground());
+                                if(numberOfLives>0) {
+                                        numberOfLives-=1;
+                                        heartList.get(numberOfLives).getBackground().setImage(new Image("heartBroken.png"));
+                                }
+                                //g.getChildren().remove(heartList.get(numberOfLives).getBackground());
+                                //g.getChildren().add(heartBrokenList.get(numberOfLives).getBackground());
                         }
                 }
 
@@ -211,7 +215,7 @@ public class GameScene extends Scene {
                 //Display of the defeat screen
 
                 if (numberOfLives<1) {
-                        numberOfLives=0;
+                        timer.stop();
                         g.getChildren().add(new StaticThing("YouLose.png",370,0,0,0,800,800).getBackground());
                 }
 
